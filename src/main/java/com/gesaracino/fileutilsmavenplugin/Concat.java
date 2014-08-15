@@ -3,6 +3,7 @@ package com.gesaracino.fileutilsmavenplugin;
 import com.gesaracino.fileutilsmavenplugin.config.ConcatConfig;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
@@ -22,7 +23,8 @@ public class Concat extends AbstractMojo {
     @Parameter(alias = "concat")
     private ConcatConfig concatConfig;
 
-    public void execute() throws MojoExecutionException {
+    @Override
+    public void execute() throws MojoExecutionException, MojoFailureException {
         LOGGER.info(concatConfig.toString());
 
         BufferedWriter writer = null;
@@ -53,8 +55,10 @@ public class Concat extends AbstractMojo {
             }
         } catch (FileNotFoundException e) {
             LOGGER.error(e.getMessage(), e);
+            throw new MojoFailureException(e.getMessage(), e);
         } catch (IOException e) {
             LOGGER.error(e.getMessage(), e);
+            throw new MojoFailureException(e.getMessage(), e);
         } finally {
             if(writer != null) {
                 try {

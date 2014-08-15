@@ -3,6 +3,7 @@ package com.gesaracino.fileutilsmavenplugin;
 import com.gesaracino.fileutilsmavenplugin.config.ReplaceConfig;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
@@ -22,7 +23,8 @@ public class Replace extends AbstractMojo {
     @Parameter(alias = "replace")
     private ReplaceConfig replaceConfig;
 
-    public void execute() throws MojoExecutionException {
+    @Override
+    public void execute() throws MojoExecutionException, MojoFailureException {
         LOGGER.info(replaceConfig.toString());
 
         try {
@@ -60,8 +62,10 @@ public class Replace extends AbstractMojo {
             }
         } catch (FileNotFoundException e) {
             LOGGER.error(e.getMessage(), e);
+            throw new MojoFailureException(e.getMessage(), e);
         } catch (IOException e) {
             LOGGER.error(e.getMessage(), e);
+            throw new MojoFailureException(e.getMessage(), e);
         }
     }
 }

@@ -25,7 +25,9 @@ public class Delete extends AbstractMojo {
         LOGGER.info(deleteConfig.toString());
 
         for(File file : deleteConfig.getTargets()) {
-            file.delete();
+            if(! file.delete()) {
+                throw new MojoFailureException("Unable to delete file " + file.getAbsolutePath());
+            }
         }
     }
 }
