@@ -1,7 +1,5 @@
 package com.gesaracino.fileutilsmavenplugin.config;
 
-import org.apache.maven.plugins.annotations.Parameter;
-
 import java.io.File;
 import java.util.List;
 
