@@ -6,7 +6,8 @@ fileutils-maven-plugin is a build plugin to perform some basic operation on text
 
 fileutils-maven-plugin provides several goals.
 
-+ fileutils-maven-plugin:concat concatenate files content to an output file
++ fileutils-maven-plugin:concatFileList concatenate files content to an output file
++ fileutils-maven-plugin:concatDirContent concatenate files content to an output file
 + fileutils-maven-plugin:replace is a string replacement utility goal 
 + fileutils-maven-plugin:delete delete files
 
@@ -24,9 +25,12 @@ to be performed
                     <artifactId>fileutils-maven-plugin</artifactId>
                     <version>1.0-SNAPSHOT</version>
                     <configuration>
-                        <concat>
+                        <concatFileList>
                         ...
-                        </concat>
+                        </concatFileList>
+                        <concatDirContent>
+                        ...
+                        </concatDirContent>
                         <replace>
                         ...
                         </replace>
@@ -39,9 +43,9 @@ to be performed
         </build>
     </project>
 
-### fileutils-maven-plugin:concat
+### fileutils-maven-plugin:concatFileList
 
-    <concat>
+    <concatFileList>
         <target>output.txt</target>
         <sources>
             <source>firstSource.txt</source>
@@ -49,8 +53,30 @@ to be performed
             ...
         </sources>
         <appendNewLine>true</appendNewLine>
-    </concat>
+    </concatFileList>
 
+### fileutils-maven-plugin:concatDirContent
+
+    <concatDirContent>
+        <target>output.txt</target>
+        <sourceDir>path\of\sourcedir</sourceDir>
+        <appendNewLine>true</appendNewLine>
+        <scanRecursively>true</scanRecursively>
+        <excludeDirs>
+            <excludeDir>path\of\sourcedir\subdir</excludeDir>
+        </excludeDirs>
+        <excludeDirsByName>
+            <excludeDirByName>prd</excludeDirByName>
+        </excludeDirsByName>
+        <excludeFiles>
+            <excludeFile>path\of\a\subdir\filetobeexcluded.txt</excludeFile>
+        </excludeFiles>
+        <excludeFilesByName>
+            <excludeFileByName>out.txt</excludeFileByName>
+        </excludeFilesByName>
+        <order>ASC</order>
+    </concatDirContent>
+    
 ### fileutils-maven-plugin:replace
 
     <replace>

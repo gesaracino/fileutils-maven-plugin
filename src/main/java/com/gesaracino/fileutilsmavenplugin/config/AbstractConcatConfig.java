@@ -1,14 +1,12 @@
 package com.gesaracino.fileutilsmavenplugin.config;
 
 import java.io.File;
-import java.util.List;
 
 /**
  * Created by Gerardo Saracino on 15/08/2014.
  */
-public class ConcatConfig {
+public abstract class AbstractConcatConfig {
     private File target;
-    private List<File> sources;
     private boolean appendNewLine;
 
     public File getTarget() {
@@ -17,14 +15,6 @@ public class ConcatConfig {
 
     public void setTarget(File target) {
         this.target = target;
-    }
-
-    public List<File> getSources() {
-        return sources;
-    }
-
-    public void setSources(List<File> sources) {
-        this.sources = sources;
     }
 
     public boolean isAppendNewLine() {
@@ -37,9 +27,8 @@ public class ConcatConfig {
 
     @Override
     public String toString() {
-        return "ConcatConfig{" +
+        return "AbstractConcatConfig{" +
                 "target=" + target +
-                ", sources=" + sources +
                 ", appendNewLine=" + appendNewLine +
                 '}';
     }
