@@ -14,15 +14,18 @@ import java.util.*;
  */
 @Mojo(name = "concatDirContent")
 public class ConcatDirContent extends AbstractConcat<ConcatDirContentConfig> {
-    private static final HashMap<ConcatDirContentConfig.Order, Comparator<File>> COMPARATORS = new HashMap<ConcatDirContentConfig.Order, Comparator<File>>() {{
+    private static final HashMap<ConcatDirContentConfig.Order, Comparator<File>> COMPARATORS = new HashMap<ConcatDirContentConfig.Order, Comparator<File>>() {
+		private static final long serialVersionUID = -1730308922315098769L;
+
+	{
         put(ConcatDirContentConfig.Order.ASC, new Comparator<File>() {
-            @Override
+            
             public int compare(File o1, File o2) {
                 return o1.getName().toLowerCase().compareTo(o2.getName().toLowerCase());
             }
         });
         put(ConcatDirContentConfig.Order.DESC, new Comparator<File>() {
-            @Override
+            
             public int compare(File o1, File o2) {
                 return -1 * o1.getName().toLowerCase().compareTo(o2.getName().toLowerCase());
             }

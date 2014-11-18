@@ -21,8 +21,7 @@ public abstract class AbstractConcat<T extends AbstractConcatConfig> extends Abs
     protected abstract T getConcatConfig();
 
     protected abstract List<File> getFiles();
-
-    @Override
+    
     public void execute() throws MojoExecutionException, MojoFailureException {
         LOGGER.info(getConcatConfig().toString());
 

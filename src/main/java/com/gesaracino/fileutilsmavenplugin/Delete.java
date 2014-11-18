@@ -19,8 +19,7 @@ public class Delete extends AbstractMojo {
 
     @Parameter(alias = "delete")
     private DeleteConfig deleteConfig;
-
-    @Override
+    
     public void execute() throws MojoExecutionException, MojoFailureException {
         LOGGER.info(deleteConfig.toString());
 

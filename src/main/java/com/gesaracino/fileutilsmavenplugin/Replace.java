@@ -22,8 +22,7 @@ public class Replace extends AbstractMojo {
 
     @Parameter(alias = "replace")
     private ReplaceConfig replaceConfig;
-
-    @Override
+    
     public void execute() throws MojoExecutionException, MojoFailureException {
         LOGGER.info(replaceConfig.toString());
 

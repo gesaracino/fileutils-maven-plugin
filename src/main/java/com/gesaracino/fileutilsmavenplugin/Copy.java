@@ -24,8 +24,7 @@ public class Copy extends AbstractMojo {
 
     @Parameter(alias = "copy")
     private CopyConfig copyConfig;
-
-    @Override
+    
     public void execute() throws MojoExecutionException, MojoFailureException {
         LOGGER.info(copyConfig.toString());
 

@@ -15,8 +15,7 @@ public class NormalFileFilter implements FileFilter {
         this.excludeFiles = excludeFiles;
         this.excludeFilesByName = excludeFilesByName;
     }
-
-    @Override
+    
     public boolean accept(File file) {
         if(! file.isFile()) {
             return false;
